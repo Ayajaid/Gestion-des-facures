@@ -54,9 +54,9 @@
             <tr th:each="paiement : ${paiements}">
                 <td th:text="${#dates.format(paiement.date, 'dd/MM/yyyy')}"></td>
                 <td th:text="${paiement.montant}"></td>
-                <td><a th:href="@{/update-paiement/{id}(id=${paiement.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <td><a th:href="@{/update-paiement/{id}(id=${paiement.id})}" class="btn btn-warning btn-sm">Modifier</a>
                 </td>
-                <td><a th:href="@{/delete/{id}(id=${paiement.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a th:href="@{/delete/{id}(id=${paiement.id})}" class="btn btn-danger btn-sm">Supprimer</a></td>
             </tr>
             </tbody>
         </table>

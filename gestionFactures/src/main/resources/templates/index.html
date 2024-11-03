@@ -65,8 +65,8 @@
                     <td th:text="${facture.etat}"></td>
                     <td><a th:href="@{/list-paiement/{factureId}(factureId=${facture.id})}" class="btn btn-success">Paiements </a>
                     </td>
-                    <td><a th:href="@{/update/{id}(id=${facture.id})}" class="btn btn-warning btn-sm">Edit</a></td>
-                    <td><a th:href="@{/delete/{id}(id=${facture.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+                    <td><a th:href="@{/update/{id}(id=${facture.id})}" class="btn btn-warning btn-sm">Modifier</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${facture.id})}" class="btn btn-danger btn-sm">Supprimer</a></td>
                 </tr>
                 </tbody>
             </table>

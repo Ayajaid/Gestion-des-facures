@@ -32,7 +32,7 @@
 <body>
 
 <div class="container my-5">
-    <h2 class="mb-4">Ajouter un Paiement pour la Facture ID : <span th:text="${factureId}"></span></h2>
+    <h2 class="mb-4">Ajouter un Paiement pour votre facture</h2>
 
     <form th:action="@{/add-paiement/{factureId}(factureId=${factureId})}" th:object="${paiement}" method="post"
           class="border p-4 rounded">
