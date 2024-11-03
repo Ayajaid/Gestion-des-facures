@@ -32,3 +32,6 @@ Ce projet est une application web permettant de gérer les factures et les paiem
 - **Thymeleaf** : Moteur de template pour la création des pages HTML.
 - **Bootstrap** : Framework CSS pour le design et la mise en page.
 
+## Auteur
+
+[Aya Jaid]
