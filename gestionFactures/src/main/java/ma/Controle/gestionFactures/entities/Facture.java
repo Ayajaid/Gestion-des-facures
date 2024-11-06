@@ -27,13 +27,10 @@ public class Facture {
     @OneToMany(mappedBy = "facture", cascade = CascadeType.ALL)
     private List<Paiement> paiements;
 
-    @Transient
-    private double montantPaye;
-
 
     private double montantRestant;
 
-    private String etat = "Incomplète";
+    private String etat ;
 
     public Facture() {
     }
@@ -78,39 +75,42 @@ public class Facture {
         this.montant = montant;
     }
 
+    public List<Paiement> getPaiements() {
+        return paiements;
+    }
+
+    public void setPaiements(List<Paiement> paiements) {
+        this.paiements = paiements;
+    }
+
+
+
+    public double getMontantRestant() {
+        if (paiements == null) {
+            return montant;
+        }
+        double totalPaiements = paiements.stream().mapToDouble(Paiement::getMontant).sum();
+        return montant - totalPaiements;
+    }
+
+    public void setMontantRestant(double montantRestant) {
+        this.montantRestant = montantRestant;
+    }
     public String getEtat() {
-        return etat;
+        double montantRestant = getMontantRestant();
+        if (montantRestant == 0) {
+            return "Complète";
+        } else {
+            return "Incomplète";
+        }
     }
 
     public void setEtat(String etat) {
         this.etat = etat;
     }
 
-    public double getMontantPaye() {
-        return montantPaye;
-    }
 
-    public void setMontantPaye(double montantPaye) {
-        this.montantPaye = montantPaye;
-    }
 
-    public double getMontantRestant() {
-        return montantRestant;
-    }
 
-    public void setMontantRestant(double montantRestant) {
-        this.montantRestant = montantRestant;
-    }
-
-    @PrePersist
-    public void prePersist() {
-
-        if (montantRestant == 0.0) {
-            montantRestant = montant;
-        }
-        if (etat == null) {
-            etat = "Incomplète";
-        }
-    }
 
 }

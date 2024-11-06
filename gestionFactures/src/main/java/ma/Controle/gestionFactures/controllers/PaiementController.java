@@ -68,7 +68,7 @@ public class PaiementController {
         Facture facture = factureRepository.findById(factureId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid facture Id:" + factureId));
 
-        facture.setMontantPaye(montantPaye);
+
         double montantRestant = facture.getMontant() - montantPaye;
         facture.setMontantRestant(montantRestant);
 

@@ -10,6 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class FactureController {
@@ -21,6 +24,12 @@ public class FactureController {
     @GetMapping("/")
     public String accueil() {
         return "accueil";
+    }
+    @GetMapping("/search")
+    public String searchFactures(@RequestParam("client") String client, Model model) {
+        List<Facture> factures = factureRepository.findByClientContainingIgnoreCase(client);
+        model.addAttribute("factures", factures);
+        return "index";
     }
 
     @GetMapping("/factures")
